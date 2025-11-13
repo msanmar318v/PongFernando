@@ -34,7 +34,7 @@ public class MovementAC : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             if (moveDirection != MoveDirection.Up)
             {
@@ -47,7 +47,7 @@ public class MovementAC : MonoBehaviour
                 horizontalInputSliderValue += acceleration * Time.deltaTime;
             }
         }
-        else if(Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
             if (moveDirection != MoveDirection.Down)
             {
@@ -112,7 +112,7 @@ public class MovementAC : MonoBehaviour
         }
         else
         {
-           colorSlider.color = Color.red;
+            colorSlider.color = Color.red;
         }
         float displayValue = slider.value * 100f;
         textValue.text = displayValue.ToString("F0") + "%";

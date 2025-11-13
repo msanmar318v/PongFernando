@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  acceleration: 5
+  acceleration: 1
   slider: {fileID: 763133271}
   textValue: {fileID: 1002059920}
 --- !u!212 &142129669
