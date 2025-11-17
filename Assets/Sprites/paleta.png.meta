@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: e492069acdb34694186bd8acc01c7201
+guid: 388d672381802bd40aaeef76389eab4c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6779661912975820233
-    second: paletaArkanoid_0
-  - first:
-      213: -1077996747466976601
-    second: paletaArkanoid_1
+      213: -8484560205970819465
+    second: paleta_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -142,45 +139,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: paletaX2
+      name: paleta_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 50
+        x: 0
+        y: 0
         width: 32
-        height: 188
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73ab4db096dc9e1a0800000000000000
-      internalID: -6779661912975820233
+      spriteID: 776b1bf1279c04a80800000000000000
+      internalID: -8484560205970819465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paleta
+      name: paleta_1
       rect:
         serializedVersion: 2
-        x: 121
-        y: 76
+        x: 32
+        y: 0
         width: 32
-        height: 130
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7a2543e6baf2a01f0800000000000000
-      internalID: -1077996747466976601
+      spriteID: 2f24e7b6e939067439f62f95d51061a9
+      internalID: 562982582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paleta_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce1ae57f642359644a2e6ca1ecc9be5f
+      internalID: 516952336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paleta_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e085a623e0e9b4f8b1f8d45150dd27
+      internalID: -768539243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paleta_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb2649f290580e94bb5ad9844fe9c680
+      internalID: -183140084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paleta_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 351ae6757a29d4b4cbddf88322bf6cf1
+      internalID: -1397113250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paleta_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8473077d106622f48be96239608d10bf
+      internalID: 320278607
       vertices: []
       indices: 
       edges: []
@@ -189,7 +296,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5c994c5dea5fa204f97853a8355d931d
+    spriteID: f6f4b61b57fde49409d47da756aa8acc
     internalID: 0
     vertices: []
     indices: 
@@ -199,8 +306,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      paleta: -1077996747466976601
-      paletaX2: -6779661912975820233
+      paleta_0: -8484560205970819465
+      paleta_1: 562982582
+      paleta_2: 516952336
+      paleta_3: -768539243
+      paleta_4: -183140084
+      paleta_5: -1397113250
+      paleta_6: 320278607
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
