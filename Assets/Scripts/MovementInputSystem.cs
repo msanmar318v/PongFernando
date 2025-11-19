@@ -27,15 +27,15 @@ public class MovementInputSystem : MonoBehaviour
 
     private MoveDirection moveDirection;
     private Image colorSlider;
-    private InputAction moveAction;
+    private InputAction moveAction1;
 
     private void Start()
     {
         moveDirection = MoveDirection.Idle;
         colorSlider = slider.fillRect.GetComponent<Image>();
-        moveAction = InputSystem.actions.FindAction("Move");
+        moveAction1 = InputSystem.actions.FindAction("Move1");
 
-        if (moveAction == null)
+        if (moveAction1 == null)
         {
             Debug.LogError("No se encontró la acción 'Move' en el Input System. Comprueba el nombre exacto.");
         }
@@ -43,9 +43,9 @@ public class MovementInputSystem : MonoBehaviour
 
     void Update()
     {
-        if (moveAction == null) return;
+        if (moveAction1 == null) return;
 
-        Vector2 moveValue = moveAction.ReadValue<Vector2>();
+        Vector2 moveValue = moveAction1.ReadValue<Vector2>();
         verticalInput = Mathf.Clamp(moveValue.y, -1f, 1f);
 
         if (verticalInput > 0f)

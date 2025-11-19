@@ -1,9 +1,11 @@
-﻿using TMPro;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class MovementAC : MonoBehaviour
+public class MovementInputSystemMessageBK : MonoBehaviour
 {
+
     [SerializeField, Range(1f, 100f)] private float speed = 5f;
 
     private float verticalInput = 0f;
@@ -11,13 +13,14 @@ public class MovementAC : MonoBehaviour
     [SerializeField, Range(0.5f, 10f)] private float acceleration = 5f;
 
     private float horizontalInputSliderValue = 0f;
-
     [SerializeField] private float maxY = 4f;
     [SerializeField] private float minY = -4f;
 
     // Ui Controll reference
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI textValue;
+
+    private Vector2 moveValue;
 
     private enum MoveDirection
     {
@@ -28,6 +31,7 @@ public class MovementAC : MonoBehaviour
 
     private MoveDirection moveDirection;
     private Image colorSlider;
+    private InputAction moveAction;
 
     private void Start()
     {
@@ -35,9 +39,17 @@ public class MovementAC : MonoBehaviour
         colorSlider = slider.fillRect.GetComponent<Image>();
     }
 
-    private void Update()
+    void OnMove(InputValue context)
     {
-        if (Input.GetKey(KeyCode.W))
+        this.moveValue = context.Get<Vector2>();
+    }
+
+    void Update()
+    {
+
+        verticalInput = Mathf.Clamp(moveValue.y, -1f, 1f);
+
+        if (verticalInput > 0f)
         {
             if (transform.position.y >= maxY) return;
             if (moveDirection != MoveDirection.Up)
@@ -45,13 +57,13 @@ public class MovementAC : MonoBehaviour
                 horizontalInputSliderValue = 0f;
                 moveDirection = MoveDirection.Up;
             }
-            verticalInput = 1f;
+
             if (horizontalInputSliderValue < 1f)
             {
                 horizontalInputSliderValue += acceleration * Time.deltaTime;
             }
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (verticalInput < 0f)
         {
             if (transform.position.y <= minY) return;
             if (moveDirection != MoveDirection.Down)
@@ -59,7 +71,7 @@ public class MovementAC : MonoBehaviour
                 horizontalInputSliderValue = 0f;
                 moveDirection = MoveDirection.Down;
             }
-            verticalInput = -1f;
+
             if (horizontalInputSliderValue > -1f)
             {
                 horizontalInputSliderValue -= acceleration * Time.deltaTime;
@@ -67,7 +79,6 @@ public class MovementAC : MonoBehaviour
         }
         else
         {
-            verticalInput = 0f;
             if (horizontalInputSliderValue > 0f && moveDirection != MoveDirection.Idle)
             {
                 horizontalInputSliderValue -= acceleration * Time.deltaTime;
@@ -93,11 +104,6 @@ public class MovementAC : MonoBehaviour
         }
 
         slider.value = Mathf.Clamp01(Mathf.Abs(horizontalInputSliderValue));
-        float compareValue = slider.value;
-        if (compareValue < 0f)
-        {
-            compareValue = Mathf.Abs(compareValue);
-        }
 
         if (slider.value == 0f)
         {
@@ -119,6 +125,7 @@ public class MovementAC : MonoBehaviour
         {
             colorSlider.color = Color.red;
         }
+
         float displayValue = slider.value * 100f;
         textValue.text = displayValue.ToString("F0") + "%";
 
