@@ -9,13 +9,10 @@ public class MovementInputSystemMessage : MonoBehaviour
 
     [SerializeField, Range(1f, 100f)] private float speed = 5f;
 
-    private float verticalInput = 0f;
-
-    [SerializeField, Range(0.5f, 10f)] private float acceleration = 1f;
-
-    private float verticalAcceleration = 0f;
-
     private Vector2 inputMovement;
+    private Rigidbody2D rigidbody2D;
+
+    Vector2 initialPosition;
 
     private enum MoveDirection
     {
@@ -25,22 +22,31 @@ public class MovementInputSystemMessage : MonoBehaviour
     }
 
     private MoveDirection moveDirection;
-    private Rigidbody2D rigidbody2D;
 
     private void Start()
     {
         moveDirection = MoveDirection.Idle;
         rigidbody2D = GetComponent<Rigidbody2D>();
+        initialPosition = transform.position;
     }
 
-    void OnMove(InputValue context)
+    public void Reset()
     {
-        this.inputMovement = context.Get<Vector2>();
+       transform.position = initialPosition;
+    }
+
+    // ESTE LO USARÁ EL JUGADOR 1 (acción "Move")
+    public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        inputMovement = context.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        moveDirection = inputMovement.y > 0 ? MoveDirection.Up : inputMovement.y < 0 ? MoveDirection.Down : MoveDirection.Idle;
+        moveDirection = inputMovement.y > 0 ? MoveDirection.Up :
+                        inputMovement.y < 0 ? MoveDirection.Down :
+                        MoveDirection.Idle;
+
         rigidbody2D.linearVelocity = (float)moveDirection * speed * Vector2.up;
     }
 
