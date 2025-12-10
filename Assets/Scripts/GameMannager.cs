@@ -12,6 +12,7 @@ public class GameMannager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI p01Score;
     [SerializeField] private TextMeshProUGUI p02Score;
+    [SerializeField] private TextMeshProUGUI gameOverText;
 
     // Objetos del juego
     [SerializeField] private Ball ball;
@@ -20,6 +21,7 @@ public class GameMannager : MonoBehaviour
 
     private bool paused = false;
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject gameOverPanel;
 
     private void Awake()
     {
@@ -37,10 +39,12 @@ public class GameMannager : MonoBehaviour
     {
         Reset();
         panel.SetActive(false);
+        gameOverPanel.SetActive(false);
     }
 
     private void Reset()
     {
+        if (Time.timeScale == 0f) return;
         p01Points = 0;
         p02Points = 0;
         p01Score.text = "00";
@@ -77,6 +81,19 @@ public class GameMannager : MonoBehaviour
             p02Points++;
             p02Score.text = p02Points.ToString("00");
         }
+       if (p01Points >= 10)
+        {
+            gameOverText.text = "EL JUGADOR 1 HA GANADO LA PARTIDA";
+            gameOverPanel.SetActive(true);
+            Reset();
+            Time.timeScale = 0f;
+        } else if (p02Points >= 10)
+        {
+            gameOverText.text = "EL JUGADOR 2 HA GANADO LA PARTIDA";
+            gameOverPanel.SetActive(true);
+            Reset();
+            Time.timeScale = 0f;
+        }
         ball.Reset();
         player01.Reset();
         player02.Reset();
@@ -84,6 +101,7 @@ public class GameMannager : MonoBehaviour
 
     private void Pause()
     {
+        if (Time.timeScale == 0f && !paused) return;
         paused = !paused;
         panel.SetActive(paused);
         Time.timeScale = paused ? 0f : 1f;
@@ -95,5 +113,18 @@ public class GameMannager : MonoBehaviour
         {
             Pause();
         }
+    }
+
+    public void onMainMenu()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void onRestart()
+    {
+        Time.timeScale = 1f;
+        gameOverPanel.SetActive(false);
+        Reset();
     }
 }
