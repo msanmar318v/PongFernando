@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
     [SerializeField, Range(0.1f, 10f)] private float speed = 10f;
     [SerializeField, Range(10f, 100f)] private float maxSpeed = 20f;
 
+    private const float MAX_ANGLE = 30f;    
+
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -35,8 +37,24 @@ public class Ball : MonoBehaviour
         if (v.magnitude < speed)
         {
             v = v.normalized * speed;
-            rigidbody2D.linearVelocity = v;
         }
+
+        float angle = Vector2.Angle(v, Vector2.right);
+
+        if (angle > 90f) angle = 180f - angle;
+
+        if (angle > MAX_ANGLE)
+        {
+            float newAngle = Mathf.Sign(v.y) * MAX_ANGLE;
+            float rad = newAngle * Mathf.Deg2Rad;
+
+            float newX = Mathf.Cos(rad) * v.magnitude * Mathf.Sign(v.x);
+            float newY = Mathf.Sin(rad) * v.magnitude;
+
+            v = new Vector2(newX, newY);
+        }
+
+        rigidbody2D.linearVelocity = v;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -86,6 +86,7 @@ public class GameMannager : MonoBehaviour
     {
         paused = !paused;
         panel.SetActive(paused);
+        Time.timeScale = paused ? 0f : 1f;
     }
 
     public void Onpause(InputAction.CallbackContext context)
